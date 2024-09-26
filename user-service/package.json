@@ -1,0 +1,34 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "description": "User service for ecommerce backend api.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "User",
+    "Service",
+    "Ecommerce",
+    "Backend",
+    "Api"
+  ],
+  "author": "Ravi Dholariya",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-validator": "^7.2.0",
+    "mongoose": "^8.6.4",
+    "multer": "^1.4.5-lts.1",
+    "user-service": "file:",
+    "winston": "^3.14.2",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}

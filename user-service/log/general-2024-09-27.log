@@ -1,0 +1,2 @@
+{"level":"info","message":"Mongodb Connected successfully","timestamp":"2024-09-27 03:19:07"}
+{"level":"info","message":"{\"method\":\"GET\",\"Url\":\"/\",\"ip\":\"::1\",\"status\":304,\"duration\":\"4ms\"}","timestamp":"2024-09-27 03:19:29"}
