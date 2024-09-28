@@ -18,7 +18,7 @@ const req_logger = (req, res, next) => {
   });
   res.on("timeout", () => {
     const timeoutError = new Error("Request timed out");
-    timeoutError.statusCode = 408;
+    timeoutError.status = 408;
     next(timeoutError);
   });
   next();
