@@ -10,6 +10,7 @@ const req_logger = (req, res, next) => {
     const res_obj = {
       method: req.method,
       Url: req.url,
+      message: res.res_obj || res.statusMessage || res.error,
       ip: req.ip,
       status: res.statusCode,
       duration: duration + "ms",

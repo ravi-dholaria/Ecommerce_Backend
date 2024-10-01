@@ -1,5 +1,6 @@
 //#region Import statements
 import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 //#endregion
 
 //#region user Schema
@@ -45,6 +46,15 @@ const user_schema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+//#endregion
+
+//#region hash password before saving
+user_schema.pre("save", async function (next) {
+  if (!this.isModified("password")) next();
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
 //#endregion
 
 export default mongoose.model("User", user_schema);

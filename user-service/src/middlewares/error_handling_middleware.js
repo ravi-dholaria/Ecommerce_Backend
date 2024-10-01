@@ -4,6 +4,7 @@ import logger from "../utils/logger.js";
 import multer from "multer";
 import { error } from "console";
 import fs from "fs";
+import { delete_file } from "../utils/utility.js";
 //#endregion
 
 //#region Error Handler
@@ -51,11 +52,11 @@ const error_handler = (err, req, res, next) => {
 export const validate_result = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
+    //remove profile pic if validation failed
+    if (req.file && req.file.path) delete_file(req.file.path);
+
     const err = new Error(errors.array()[0].msg);
     err.status = 400;
-    fs.unlink(req.file.path, (err) => {
-      if (err) throw err;
-    });
     next(err);
   }
   next();
