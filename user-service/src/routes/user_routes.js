@@ -22,12 +22,15 @@ import { validate_result } from "../middlewares/error_handling_middleware.js";
 const user_router = Router();
 
 //#region routes
+
+// /profile
 user_router.get(
   "/profile",
   passport.authenticate("jwt", { session: false }),
   get_profile
 );
 
+// /register
 user_router.post(
   "/register",
   upload.single("profile_pic"),
@@ -36,10 +39,10 @@ user_router.post(
   user_register
 );
 
+// /login
 user_router.post("/login", user_login_validator, validate_result, user_login);
 
-// user_router.post("/forgot_password");
-
+// /update_profile
 user_router.put(
   "/update_profile",
   passport.authenticate("jwt", { session: false }),
@@ -49,13 +52,18 @@ user_router.put(
   update_user_profile
 );
 
+// /remove_user
 user_router.delete(
   "/remove_user",
   passport.authenticate("jwt", { session: false }),
   delete_account
 );
 
+// /refresh_token
 user_router.post("/refresh_token", refresh_access_token);
+
+// user_router.post("/forgot_password");
+
 //#endregion
 
 export default user_router;

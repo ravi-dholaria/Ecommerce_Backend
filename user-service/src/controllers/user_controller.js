@@ -23,7 +23,7 @@ export const user_register = async (req, res) => {
       address,
       role,
       phone_number,
-      profile_path,
+      ...(profile_path && { profile_path }),
     });
     const { password: _, ...user_without_password } = new_user.toObject();
     res.status(201).json(user_without_password);

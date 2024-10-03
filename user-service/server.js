@@ -3,7 +3,6 @@ import "dotenv/config";
 import app from "./src/app.js";
 import os from "os";
 import dns from "dns";
-import logger from "./src/utils/logger.js";
 //#endregion
 
 const PORT = process.env.PORT;
