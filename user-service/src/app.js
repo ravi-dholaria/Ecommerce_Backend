@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 app.get("*", (req, res) => {
   res.status(404).json({ message: "404 Not Found!" });
 });
+
 app.use(error_handler);
 
 export default app;

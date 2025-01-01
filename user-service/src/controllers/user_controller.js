@@ -77,9 +77,13 @@ export const update_user_profile = async (req, res) => {
       ...user_without_password
     } = new_user.toObject();
     res.status(200).json(user_without_password);
+    //delete previous profile picture
     if (file_to_be_deleted) delete_file(file_to_be_deleted);
   } catch (error) {
+    //delete new profile_pic
     delete_file(req.file.path);
+
+    // Handle errors related to unique constraints in the user model
     if (error.code == 11000)
       return res.status(400).json({
         message: `This ${
@@ -111,6 +115,14 @@ export const delete_account = async (req, res) => {
 //#endregion
 
 //#region refresh_access_token
+
+/**
+ * Refreshes the access token using the provided refresh token.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} res - The response object.
+ * @returns {Object} - The access token in the response.
+ */
 export const refresh_access_token = (req, res) => {
   try {
     const refresh_token = req.cookies.refreshToken;
@@ -130,4 +142,5 @@ export const refresh_access_token = (req, res) => {
     return res.status(401).json({ error });
   }
 };
+
 //#endregion

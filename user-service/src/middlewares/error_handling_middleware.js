@@ -1,10 +1,10 @@
 //#region import statements
 import { validationResult } from "express-validator";
+import { delete_file } from "../utils/utility.js";
 import logger from "../utils/logger.js";
 import multer from "multer";
 import { error } from "console";
 import fs from "fs";
-import { delete_file } from "../utils/utility.js";
 //#endregion
 
 //#region Error Handler
